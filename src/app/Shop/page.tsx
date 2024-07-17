@@ -13,12 +13,12 @@ export default function PageMain() {
                     <h1 className="mt-10 mb-10"> Produtos Com Desconto</h1>
                 </div>
                 <hr className="mb-10"/>
-                <Slider />
+                <Slider products={[]} />
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="mt-10 mb-10"> Camisas</h1>
                 </div>
                 <hr className="mb-10"/>
-                <Slider />
+                <Slider products={[]} />
             </div>
         </div>
     );

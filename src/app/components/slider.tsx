@@ -4,66 +4,37 @@ import React, { useEffect, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import './slider.css';
+import { Product } from "../models/Product";
 
-const data = [
-    {
-        id: 1,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 1",
-        description: "Description for Item 1",
-        buttonText: "Button 1"
-    },
-    {
-        id: 2,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 2",
-        description: "Description for Item 2",
-        buttonText: "Button 2"
-    },
-   
-    {
-        id: 3,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 3",
-        description: "Description for Item 3",
-        buttonText: "Button 3"
-    },
-    {
-        id: 4,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 4",
-        description: "Description for Item 4",
-        buttonText: "Button 4"
-    },
-    {
-        id: 5,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 5",
-        description: "Description for Item 5",
-        buttonText: "Button 5"
-    },
-    {
-        id: 6,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 6",
-        description: "Description for Item 6",
-        buttonText: "Button 6"
-    },  {
-        id: 7,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 6",
-        description: "Description for Item 6",
-        buttonText: "Button 6"
-    },  {
-        id: 8,
-        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-        title: "Item 6",
-        description: "Description for Item 6",
-        buttonText: "Button 6"
-    },
+// Assuming Category is already imported
+import { Category } from "../models/Category";
+
+// Mock categories
+const electronics = new Category(1, "Electronic gadgets and devices");
+const books = new Category(1, "All kinds of books");
+const homeAppliances = new Category(1, "Essential home appliances");
+
+// Mock products
+const mockProducts = [
+    new Product("Smartphone 12X", "Latest model with high resolution camera", 799, 50, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Epic Fantasy Book", "Explore epic fantasy worlds", 19.99, 100, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Microwave Oven", "Quick cooking solutions", 150, 30, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Smart Watch", "Your health on your wrist", 299, 75, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Historical Novel", "Journey through history", 24.99, 80, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Blender", "Make smoothies in seconds", 89, 60, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Tablet 8 Pro", "For work and play", 649, 40, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Science Fiction", "Sci-fi at its best", 29.99, 90, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Toaster", "Perfect toast every time", 34, 50, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Laptop Pro", "High performance for professionals", 1200, 25, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
 ];
 
-const Slider: React.FC = () => {
+interface SliderProps {
+    products: Product[];
+}
+
+const Slider = ({ products: initialProducts }: SliderProps) => {
+    const [products, setProducts] = useState(initialProducts.length > 0 ? initialProducts : mockProducts);
+
     const [ref] = useKeenSlider<HTMLDivElement>({
         loop: true,
         mode: "free",
@@ -73,6 +44,7 @@ const Slider: React.FC = () => {
         },
     });
 
+
     const [perView, setPerView] = useState(getPerView());
 
     useEffect(() => {
@@ -81,40 +53,41 @@ const Slider: React.FC = () => {
         };
 
         window.addEventListener("resize", handleResize);
-
         return () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
 
     function getPerView() {
+        if (typeof window === "undefined") {
+            return 4; 
+        }
         if (window.innerWidth <= 500) {
-                return 2;
-        }
-        else if (window.innerWidth <= 750) {
+            return 2;
+        } else if (window.innerWidth <= 750) {
             return 3;
-        }
-        else if (window.innerWidth <= 1000) {
+        } else if (window.innerWidth <= 1000) {
             return 4;
         } else if (window.innerWidth <= 1450) {
             return 5;
         } else if (window.innerWidth <= 1750) {
             return 6;
-        } else {
-            return 8;
         }
+        return 8;
     }
 
     return (
-        <div ref={ref} className="keen-slider " >
-            {data.map((item) => (
-                <div key={item.id} className="keen-slider__slide card card-compact bg-base-100 shadow-xl">
-                    <figure><img src={item.imageUrl} alt={item.title} /></figure>
+        <div ref={ref} className="keen-slider">
+            {products.map((item, index) => (
+                <div key={index} className="keen-slider__slide card card-compact bg-base-100 shadow-xl">
+                    <figure>
+                        <img src={item.imageUrl} alt={item.name} onError={(e) => e.currentTarget.src = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'} />
+                    </figure>
                     <div className="card-body">
-                        <h2 className="card-title">{item.title}</h2>
+                        <h2 className="card-title">{item.name}</h2>
                         <p>{item.description}</p>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">{item.buttonText}</button>
+                            <button className="btn btn-primary">Buy</button>
                         </div>
                     </div>
                 </div>
