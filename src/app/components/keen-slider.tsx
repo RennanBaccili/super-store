@@ -16,23 +16,23 @@ const homeAppliances = new Category(1, "Essential home appliances");
 
 // Mock products
 const mockProducts = [
-    new Product("Smartphone 12X", "Latest model with high resolution camera", 799, 50, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Epic Fantasy Book", "Explore epic fantasy worlds", 19.99, 100, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Microwave Oven", "Quick cooking solutions", 150, 30, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Smart Watch", "Your health on your wrist", 299, 75, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Historical Novel", "Journey through history", 24.99, 80, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Blender", "Make smoothies in seconds", 89, 60, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Tablet 8 Pro", "For work and play", 649, 40, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Science Fiction", "Sci-fi at its best", 29.99, 90, books, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Toaster", "Perfect toast every time", 34, 50, homeAppliances, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
-    new Product("Laptop Pro", "High performance for professionals", 1200, 25, electronics, "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"),
+    new Product("Smartphone 12X", "Latest model with high resolution camera", 799, 50, electronics, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Epic Fantasy Book", "Explore epic fantasy worlds", 19.99, 100, books, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Microwave Oven", "Quick cooking solutions", 150, 30, homeAppliances, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Smart Watch", "Your health on your wrist", 299, 75, electronics, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Historical Novel", "Journey through history", 24.99, 80, books, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Blender", "Make smoothies in seconds", 89, 60, homeAppliances, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Tablet 8 Pro", "For work and play", 649, 40, electronics, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Science Fiction", "Sci-fi at its best", 29.99, 90, books, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Toaster", "Perfect toast every time", 34, 50, homeAppliances, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
+    new Product("Laptop Pro", "High performance for professionals", 1200, 25, electronics, "https://static.nike.com/a/images/t_default/5ad01975-3d1e-4720-8853-5327e4dada08/sapatilhas-air-force-1-mid-off-white.png"),
 ];
 
 interface SliderProps {
     products: Product[];
 }
 
-const Slider = ({ products: initialProducts }: SliderProps) => {
+const KeenSlider = ({ products: initialProducts }: SliderProps) => {
     const [products, setProducts] = useState(initialProducts.length > 0 ? initialProducts : mockProducts);
 
     const [ref] = useKeenSlider<HTMLDivElement>({
@@ -96,4 +96,4 @@ const Slider = ({ products: initialProducts }: SliderProps) => {
     );
 };
 
-export default Slider;
+export default KeenSlider;

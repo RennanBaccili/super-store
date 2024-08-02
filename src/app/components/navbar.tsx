@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar({ onLoginClick } :any) {
+
     return (
         <nav className="w-full flex justify-center bg-base-200 fixed ">
             <div className="navbar w-10/12">
                 <div className="flex-1">
-                    <Link href="/Shop" className="btn btn-ghost text-xl">
-                        AppShop
+                    <Link href="/" className="btn btn-ghost text-xl">
+                        ShopMain
+                    </Link>
+                    <Link href="/chat" className="btn btn-ghost text-xl">
+                        ShopChat
                     </Link>
                 </div>
                 <div className="flex-none">
@@ -40,9 +44,8 @@ export default function Navbar() {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
+                                <a onClick={onLoginClick} className="justify-between">
+                                    Login
                                 </a>
                             </li>
                             <li><a>Settings</a></li>

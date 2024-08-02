@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, MouseEvent } from 'react';
-import MainChat from './chat';
+import MiniChat from './mini-chat';
+
 
 type ResizeType = 'right' | 'top' | 'topRight';
 
@@ -51,11 +52,11 @@ export default function ShopChat() {
     };
 
     return (
-        <div style={{ ...dimensions, maxWidth: '600px', minWidth:'600px', minHeight:'800px',  maxHeight:'800px', position: 'fixed', bottom: '0', left: '0', borderRadius: '10px' }} className="bg-slate-700">
+        <div style={{ ...dimensions, maxWidth: '1200px', minWidth:'600px', minHeight:'800px',  maxHeight:'800px', position: 'fixed', bottom: '0', left: '0', borderRadius: '10px' }} className="bg-slate-700">
             <div className="resizer-top" style={{ width: '100%', height: '5px', cursor: 'n-resize', position: 'absolute', top: 0, backgroundColor: '#7480ff', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} onMouseDown={handleResize('top')}></div>
             <div className="resizer-right" style={{ width: '5px', height: '100%', cursor: 'e-resize', position: 'absolute', right: 0, backgroundColor: '#7480ff', borderTopRightRadius: '10px', borderBottomRightRadius: '10px' }} onMouseDown={handleResize('right')}></div>
             <div className="resizer-top-right" style={{ width: '10px', height: '10px', cursor: 'ne-resize', position: 'absolute', right: 0, top: 0, backgroundColor: '#7480ff', borderTopRightRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.6)' }} onMouseDown={handleResize('topRight')}></div>
-            <MainChat/>
+            <MiniChat/>
         </div>
     );
 }

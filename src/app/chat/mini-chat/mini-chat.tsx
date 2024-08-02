@@ -1,14 +1,12 @@
 'use client'
 
+
 import React, { useState, useEffect } from 'react';
 import TextMessage from './textMessage';
-import { Message } from '../models/message';
-
 import InputMessage from './inputMessage';
-import { ResponseMessage } from '../models/ResponseMessage';
+import { ResponseMessage } from '@/app/models/Response/ResponseMessage';
 
-
-export default function MainChat() {
+export default function MiniChat() {
     const [isVisible, setIsVisible] = useState(true);
     const [chatMessage, setChatMessages] = useState<(ResponseMessage)[]>([]);
 
@@ -23,7 +21,7 @@ export default function MainChat() {
         };
     }, []);
 
-    const handleNewMessage = (newMessage: ResponseMessage) => {
+    const handleNewMessage = (newMessage: any) => {
         setChatMessages(prevMessages => [...prevMessages, newMessage]); 
     };
 

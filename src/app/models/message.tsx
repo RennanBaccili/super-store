@@ -1,11 +1,11 @@
 import { TypeUser } from "./typeuser.enum";
 
 export class Message {
-  Answer: string;
+  content: string;
   TypeUser: TypeUser;
   
-  constructor(Answer: string, TypeUser: TypeUser) {
-    this.Answer = Answer;
+  constructor(content: string, TypeUser: TypeUser) {
+    this.content = content;
     this.TypeUser = TypeUser;
   }
 }

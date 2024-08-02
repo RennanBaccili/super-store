@@ -33,3 +33,59 @@ body {
     text-wrap: balance;
   }
 }
+.slick-slide > div {
+  margin: 0 10px; 
+}
+
+/* Arquivo que cuida da animação do histórico */
+
+.slide-in {
+    animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.slide-in-button {
+  animation: slide-in-button 0.5s forwards;
+}
+.slide-out-button{
+  animation: slide-out-button-a 0.5s forwards;
+}
+
+@keyframes slide-in-button {
+  from {
+      transform: translateX(0);
+  }
+  to {
+      transform: translateX(300px);
+  }
+}
+
+@keyframes slide-out-button-a {
+  from {
+      transform: translateX(300px);
+  }
+  to {
+      transform: translateX(0px);
+  }
+}

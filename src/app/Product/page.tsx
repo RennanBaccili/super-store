@@ -1,22 +1,30 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuth } from '../auth/AuthContext.';
+import { useRouter } from 'next/navigation';
 
 export default function ProductPage() {
   
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
+    const { isAuthenticated } = useAuth();
+    const router = useRouter();
+  
+    useEffect(() => {
+        if (!isAuthenticated) {
+            router.push('/Shop'); 
+        }
+    }, [isAuthenticated, router]);
+
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-    
         let reader = new FileReader();
         let file = e.target.files && e.target.files[0]; 
-    
         if (file) {
             reader.onloadend = () => {
                 setImagePreviewUrl(reader.result as string);
             }
-        
             reader.readAsDataURL(file);
         }
     }
